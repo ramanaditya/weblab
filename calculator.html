@@ -1,0 +1,76 @@
+<!--
+Write a JavaScript to design a simple calculator to perform the following operations: sum, product, difference and quotient.
+-->
+<html>
+    <head>
+        <title>Calculator</title>
+        <script type="text/javascript">
+            function calculate(id)
+            {
+                var operand1 = parseFloat(document.getElementById("operand1").value);
+                var operand2 = parseFloat(document.getElementById("operand2").value);
+                if(isNaN(operand1) || isNaN(operand1))
+                    document.getElementById("result").value="Not a valid Number";
+                
+                switch (id){
+                    case "add": 
+                        document.getElementById("result").value=operand1+operand2;
+                        break;
+                    
+                    case "sub": 
+                        document.getElementById("result").value=operand1-operand2;
+                        break;
+                    
+                    case "mul":
+                        document.getElementById("result").value=operand1*operand2;
+                        break
+
+                    case "div":
+                        if (operand2 === 0) {
+                            document.getElementById("result").value="Zero By Division Error";
+                        } else {
+                            document.getElementById("result").value=operand1/operand2;
+                        }
+                        break
+
+                    default:
+                        break;
+                }
+            }
+
+            function reset()
+            {
+                operand1.value=null;
+                operand2.value=null;
+                result.value=null;
+            }
+        </script>
+    </head>
+    <body>
+        <h1 class="heading">CALCULATOR</h1>
+        <form>
+            <div class="op1">
+                <span>Operand 1:  </span>
+                <input type="text" id="operand1" value=""/>
+            </div>
+            <div class="op2">
+                <span>Operand 1:  </span>
+                <input type="text" id="operand2" value=""/>
+            </div>
+            
+            <div class="result">
+                <span>Result: </span>
+                <input type="text" id="result" value="" disabled />
+            </div>
+            <div class="operand">
+                <input type="button" value="Addition" id="add" onclick="calculate(this.id)"/>
+                <input type="button" value="Subtraction" id="sub" onclick="calculate(this.id)"/>
+                <input type="button" value="Multiplication" id="mul" onclick="calculate(this.id)"/>
+                <input type="button" value="Division" id="div" onclick="calculate(this.id)"/>
+            </div>
+            <div class="result">
+                <input type="button" value="Reset" onclick="reset()"/>
+            </div>
+        </form>
+    </body>
+</html>
